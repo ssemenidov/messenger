@@ -1,9 +1,9 @@
-.messege {
+.message {
   width: fit-content;
   padding: 10px;
   margin: 10px;
 }
-.messege--user {
+.message__user {
   margin-left: auto;
 }
 .card-user {

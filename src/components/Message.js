@@ -4,10 +4,10 @@ import "./Message.css";
 function Message({ message, username }) {
   const isUser = message.username === username;
   return (
-    <div className={`messege ${isUser && "messege--user"}`}>
+    <div className={`message ${isUser && "message__user"}`}>
       <Typography
-        variant="h8"
-        component="h8"
+        variant="h6"
+        component="h6"
         color="textSecondary"
         gutterBottom
       >
