@@ -1,21 +1,22 @@
 import React from "react";
 import { Card, CardContent, Typography } from "@material-ui/core";
 import "./Message.css";
-function Message(props) {
+function Message({ message, username }) {
+  const isUser = message.username === username;
   return (
-    <div className="card">
+    <div className={`messege ${isUser && "messege--user"}`}>
       <Typography
         variant="h8"
         component="h8"
         color="textSecondary"
         gutterBottom
       >
-        {props.message.username}
+        {!isUser && message.username}
       </Typography>
       <Card>
         <CardContent>
           <Typography variant="h5" component="h2">
-            {props.message.text}
+            {message.text}
           </Typography>
         </CardContent>
       </Card>

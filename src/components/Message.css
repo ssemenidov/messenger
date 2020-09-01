@@ -1,5 +1,8 @@
-.card {
+.messege {
   width: fit-content;
   padding: 10px;
   margin: 10px;
+}
+.messege--user {
+  margin-left: auto;
 }

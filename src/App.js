@@ -12,7 +12,7 @@ function App() {
   const [username, setUsername] = useState("unsigned user");
   const addMessage = (e) => {
     e.preventDefault();
-    setMessages([{ username: "", text: input }, ...messages]);
+    setMessages([{ username: username, text: input }, ...messages]);
     setInput("");
   };
   useEffect(() => {
