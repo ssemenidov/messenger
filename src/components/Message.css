@@ -6,3 +6,7 @@
 .messege--user {
   margin-left: auto;
 }
+.card-user {
+  background-color: blue !important;
+  color: white !important;
+}

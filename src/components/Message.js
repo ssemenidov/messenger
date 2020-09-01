@@ -13,7 +13,7 @@ function Message({ message, username }) {
       >
         {!isUser && message.username}
       </Typography>
-      <Card>
+      <Card className={isUser ? "card-user" : "card-guest"}>
         <CardContent>
           <Typography variant="h5" component="h2">
             {message.text}
