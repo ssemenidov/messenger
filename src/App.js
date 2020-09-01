@@ -5,11 +5,14 @@ import "./App.css";
 import Message from "./components/Message";
 function App() {
   const [input, setInput] = useState("");
-  const [messages, setMessages] = useState(["gfdgf", "gfdgfd"]);
+  const [messages, setMessages] = useState([
+    { username: "alex", text: "hey" },
+    { username: "danil", text: "What's Up" },
+  ]);
   const [username, setUsername] = useState("unsigned user");
   const addMessage = (e) => {
     e.preventDefault();
-    setMessages([input, ...messages]);
+    setMessages([{ username: "", text: input }, ...messages]);
     setInput("");
   };
   useEffect(() => {

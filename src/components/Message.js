@@ -1,21 +1,21 @@
 import React from "react";
 import { Card, CardContent, Typography } from "@material-ui/core";
-
+import "./Message.css";
 function Message(props) {
   return (
-    <div>
+    <div className="card">
       <Typography
         variant="h8"
         component="h8"
         color="textSecondary"
         gutterBottom
       >
-        {props.username}
+        {props.message.username}
       </Typography>
       <Card>
         <CardContent>
           <Typography variant="h5" component="h2">
-            {props.message}
+            {props.message.text}
           </Typography>
         </CardContent>
       </Card>
