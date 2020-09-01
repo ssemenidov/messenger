@@ -1,15 +1,20 @@
 import React, { useState, useEffect } from "react";
 import { Button, TextField } from "@material-ui/core";
+
 import "./App.css";
 import Message from "./components/Message";
 function App() {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState(["gfdgf", "gfdgfd"]);
+  const [username, setUsername] = useState("unsigned user");
   const addMessage = (e) => {
     e.preventDefault();
     setMessages([input, ...messages]);
     setInput("");
   };
+  useEffect(() => {
+    setUsername(prompt("Please enter your name"));
+  }, []);
   return (
     <div className="App">
       <h1>Messanger</h1>
@@ -34,7 +39,7 @@ function App() {
 
       <ul>
         {messages.map((message) => (
-          <Message message={message}></Message>
+          <Message username={username} message={message}></Message>
         ))}
       </ul>
     </div>
