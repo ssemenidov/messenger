@@ -21,3 +21,10 @@
   box-sizing: border-box;
   border-radius: 10px;
 }
+.app__button {
+  margin-left: auto !important;
+}
+.app__input {
+  width: 90%;
+  max-width: 800px;
+}
