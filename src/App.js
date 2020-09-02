@@ -1,11 +1,13 @@
 import React, { useState, useEffect } from "react";
 import { Button, TextField } from "@material-ui/core";
-import "./App.css";
-import Message from "./components/Message";
+import FlipMove from "react-flip-move";
 
 import firebase from "firebase";
 import "firebase/firestore";
 import db from "./firebase";
+
+import Message from "./components/Message";
+import "./App.css";
 
 function App() {
   const [input, setInput] = useState("");
@@ -59,15 +61,11 @@ function App() {
         </Button>
       </form>
 
-      <ul>
-        {messages.map((message) => (
-          <Message
-            key={message.id}
-            username={username}
-            message={message.data}
-          ></Message>
+      <FlipMove>
+        {messages.map(({ id, data }) => (
+          <Message key={id} username={username} message={data}></Message>
         ))}
-      </ul>
+      </FlipMove>
     </div>
   );
 }

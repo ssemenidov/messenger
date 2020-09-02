@@ -1,10 +1,11 @@
 import React, { forwardRef } from "react";
 import { Card, CardContent, Typography } from "@material-ui/core";
+
 import "./Message.css";
 const Message = forwardRef(({ message, username }, ref) => {
   const isUser = message.username === username;
   return (
-    <div className={`message ${isUser && "message__user"}`}>
+    <div ref={ref} className={`message ${isUser && "message__user"}`}>
       <Typography
         variant="h6"
         component="h6"
