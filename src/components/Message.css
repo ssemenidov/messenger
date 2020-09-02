@@ -2,9 +2,12 @@
   width: fit-content;
   padding: 10px;
   margin: 10px;
+  max-width: 90%;
+  text-align: left;
 }
 .message__user {
   margin-left: auto;
+  text-align: right;
 }
 .card-user {
   background-color: blue !important;
