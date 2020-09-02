@@ -9,10 +9,7 @@ import db from "./firebase";
 
 function App() {
   const [input, setInput] = useState("");
-  const [messages, setMessages] = useState([
-    { username: "alex", text: "hey" },
-    { username: "danil", text: "What's Up" },
-  ]);
+  const [messages, setMessages] = useState([]);
   const [username, setUsername] = useState("unsigned user");
 
   useEffect(() => {
@@ -22,7 +19,12 @@ function App() {
     db.collection("messages")
       .orderBy("timestamp", "desc")
       .onSnapshot((snaphot) => {
-        setMessages(snaphot.docs.map((doc) => doc.data()));
+        setMessages(
+          snaphot.docs.map((doc) => ({
+            data: doc.data(),
+            id: doc.id,
+          }))
+        );
       });
   }, []);
   const addMessage = (e) => {
@@ -59,7 +61,11 @@ function App() {
 
       <ul>
         {messages.map((message) => (
-          <Message username={username} message={message}></Message>
+          <Message
+            key={message.id}
+            username={username}
+            message={message.data}
+          ></Message>
         ))}
       </ul>
     </div>
