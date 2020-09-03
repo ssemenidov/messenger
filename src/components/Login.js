@@ -4,12 +4,11 @@ import { auth, provider } from "../firebase";
 function Login(props) {
   const SignIn = async () => {
     const result = await auth.signInWithPopup(provider);
-    console.log(result);
     props.parentCallback(result.user.displayName);
   };
   return (
     <div>
-      <Button color="primary" onClick={SignIn}>
+      <Button size="large" variant="contained" color="primary" onClick={SignIn}>
         Sign in
       </Button>
     </div>

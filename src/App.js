@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { IconButton, Button, TextField } from "@material-ui/core";
+import { IconButton, TextField, Container } from "@material-ui/core";
 import FlipMove from "react-flip-move";
 import SendIcon from "@material-ui/icons/Send";
 import firebase from "firebase";
@@ -45,43 +45,45 @@ function App() {
   };
   return (
     <div className="App ">
-      <img
-        src="https://facebookbrand.com/wp-content/uploads/2019/10/Messenger_Logo_Color_RGB.png?w=100&h=100"
-        alt=""
-      />
-      <h1>SergeMessenger</h1>
-      {!username ? (
-        <Login parentCallback={signin}></Login>
-      ) : (
-        <div>
-          <form className="app__form">
-            <TextField
-              className="app__input"
-              id="standard-basic"
-              type="text"
-              label="Write a Message"
-              value={input}
-              onChange={(event) => setInput(event.target.value)}
-            />
-            <IconButton
-              className="app__button"
-              type="submit"
-              variant="contained"
-              color="primary"
-              disabled={!input}
-              onClick={addMessage}
-            >
-              <SendIcon></SendIcon>
-            </IconButton>
-          </form>
+      <Container>
+        <img
+          src="https://facebookbrand.com/wp-content/uploads/2019/10/Messenger_Logo_Color_RGB.png?w=100&h=100"
+          alt=""
+        />
+        <h1>SergeMessenger</h1>
+        {!username ? (
+          <Login parentCallback={signin}></Login>
+        ) : (
+          <>
+            <form className="app__form">
+              <TextField
+                className="app__input"
+                id="standard-basic"
+                type="text"
+                label="Write a Message"
+                value={input}
+                onChange={(event) => setInput(event.target.value)}
+              />
+              <IconButton
+                className="app__button"
+                type="submit"
+                variant="contained"
+                color="primary"
+                disabled={!input}
+                onClick={addMessage}
+              >
+                <SendIcon></SendIcon>
+              </IconButton>
+            </form>
 
-          <FlipMove>
-            {messages.map(({ id, data }) => (
-              <Message key={id} username={username} message={data}></Message>
-            ))}
-          </FlipMove>
-        </div>
-      )}
+            <FlipMove>
+              {messages.map(({ id, data }) => (
+                <Message key={id} username={username} message={data}></Message>
+              ))}
+            </FlipMove>
+          </>
+        )}
+      </Container>
     </div>
   );
 }
