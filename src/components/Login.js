@@ -5,6 +5,7 @@ function Login(props) {
   const SignIn = async () => {
     const result = await auth.signInWithPopup(provider);
     props.parentCallback(result.user.displayName);
+    console.log(result);
   };
   return (
     <div>

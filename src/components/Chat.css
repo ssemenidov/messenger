@@ -1,0 +1,31 @@
+.Chat {
+  text-align: center;
+}
+.container {
+  width: 90%;
+  max-width: 1080px;
+  margin: 0 auto;
+}
+.chat__form {
+  padding: 20px;
+  position: fixed;
+  bottom: 20px;
+  overflow: hidden;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #e9e9eb;
+  width: 90%;
+  max-width: 1080px;
+  margin: 5px;
+  box-sizing: border-box;
+  border-radius: 10px;
+}
+.chat__button {
+  margin-left: auto !important;
+}
+.chat__input {
+  width: 90%;
+  max-width: 800px;
+}
