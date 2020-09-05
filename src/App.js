@@ -1,21 +1,11 @@
-import React, { useState, useEffect } from "react";
-import { IconButton, TextField, Container } from "@material-ui/core";
-import FlipMove from "react-flip-move";
-import SendIcon from "@material-ui/icons/Send";
-import firebase from "firebase";
-import "firebase/firestore";
-import db from "./firebase";
-
-import Message from "./components/Message";
+import React, { useState, createContext } from "react";
+import { Container } from "@material-ui/core";
 import Login from "./components/Login";
 import Chat from "./components/Chat";
 import "./App.css";
-
+export const AppContext = createContext();
 function App() {
-  const [username, setUsername] = useState(null);
-  const signin = (e) => {
-    setUsername(e);
-  };
+  const [username, setUsername] = useState("");
   return (
     <div className="App ">
       <Container>
@@ -24,11 +14,9 @@ function App() {
           alt=""
         />
         <h1>SergeMessenger</h1>
-        {!username ? (
-          <Login parentCallback={signin}></Login>
-        ) : (
-          <Chat username={username}></Chat>
-        )}
+        <AppContext.Provider value={[username, setUsername]}>
+          {!username ? <Login></Login> : <Chat></Chat>}
+        </AppContext.Provider>
       </Container>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { IconButton, TextField, Container } from "@material-ui/core";
 import FlipMove from "react-flip-move";
 import SendIcon from "@material-ui/icons/Send";
@@ -7,12 +7,13 @@ import "firebase/firestore";
 import db from "../firebase";
 
 import Message from "./Message";
+import { AppContext } from "../App";
 import "./Chat.css";
 
-function Chat(props) {
+function Chat() {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
-
+  const [username, SetUsername] = useContext(AppContext);
   useEffect(() => {
     db.collection("messages")
       .orderBy("timestamp", "desc")
@@ -30,7 +31,7 @@ function Chat(props) {
     db.collection("messages").add({
       text: input,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      username: props.username,
+      username: username,
     });
 
     setInput("");
@@ -62,11 +63,7 @@ function Chat(props) {
 
         <FlipMove>
           {messages.map(({ id, data }) => (
-            <Message
-              key={id}
-              username={props.username}
-              message={data}
-            ></Message>
+            <Message key={id} username={username} message={data}></Message>
           ))}
         </FlipMove>
       </Container>
