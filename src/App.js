@@ -1,8 +1,8 @@
 import React, { useState, createContext } from "react";
 import { Container } from "@material-ui/core";
 import Login from "./components/Login";
-import Chat from "./components/Chat";
 import "./App.css";
+import Dashboard from "./components/Dashboard";
 export const AppContext = createContext();
 function App() {
   const [username, setUsername] = useState("");
@@ -15,7 +15,7 @@ function App() {
         />
         <h1>SergeMessenger</h1>
         <AppContext.Provider value={[username, setUsername]}>
-          {!username ? <Login></Login> : <Chat></Chat>}
+          {!username ? <Login></Login> : <Dashboard></Dashboard>}
         </AppContext.Provider>
       </Container>
     </div>
