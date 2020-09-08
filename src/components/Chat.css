@@ -16,9 +16,9 @@
   align-items: center;
   justify-content: center;
   background: #e9e9eb;
-  width: 90%;
+  width: 80%;
   max-width: 1080px;
-  margin: 5px;
+  /* margin: 5px; */
   box-sizing: border-box;
   border-radius: 10px;
 }

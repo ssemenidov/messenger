@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { IconButton, TextField, Container } from "@material-ui/core";
 import FlipMove from "react-flip-move";
 import SendIcon from "@material-ui/icons/Send";
+import AttachFileIcon from "@material-ui/icons/AttachFile";
 import firebase from "firebase";
 import "firebase/firestore";
 import db from "../firebase";
@@ -49,6 +50,7 @@ function Chat() {
             value={input}
             onChange={(event) => setInput(event.target.value)}
           />
+
           <IconButton
             className="chat__button"
             type="submit"
