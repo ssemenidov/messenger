@@ -18,7 +18,7 @@ function Chat(props) {
   useEffect(() => {
     db.collection("chats")
       .doc("Oy2huo9IQUiFpgwPs7ck")
-      .collection("Chat2")
+      .collection("Chat")
       .orderBy("timestamp", "desc")
       .onSnapshot((snaphot) => {
         setMessages(
@@ -31,10 +31,10 @@ function Chat(props) {
   }, []);
   const addMessage = (e) => {
     e.preventDefault();
-    db.collection("chats").doc("Oy2huo9IQUiFpgwPs7ck").collection("Chat2").add({
+    db.collection("chats").doc("Oy2huo9IQUiFpgwPs7ck").collection("Chat").add({
       text: input,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-      username: username,
+      username: username.displayName,
     });
 
     setInput("");

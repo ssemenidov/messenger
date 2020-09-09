@@ -1,7 +1,11 @@
-import React, { setState, useEffect, useContext, useState } from "react";
-import clsx from "clsx";
+import React, {
+  setState,
+  useEffect,
+  useContext,
+  useState,
+  useRef,
+} from "react";
 import "./Sidebar.css";
-
 import {
   Button,
   Drawer,
@@ -21,31 +25,29 @@ function Sidebar() {
   const [username, SetUsername] = useContext(AppContext);
 
   useEffect(() => {
-    db.collection(username.uid).onSnapshot((snaphot) => {
+    db.collection("userchats").onSnapshot((snaphot) => {
       setChats(
         snaphot.docs.map((doc) => ({
-          chatId: doc.data().id,
+          id: doc.data().id,
         }))
       );
     });
   }, []);
-  const list = (anchor) => (
-    <div className="list" role="presentation">
-      <List>
-        {["Profile", "Contacts", "Groups"].map((text, index) => (
-          <ListItem button key={text}>
-            <ListItemText primary={text} />
-          </ListItem>
-        ))}
-      </List>
-      <Divider />
-    </div>
-  );
+
   return (
     <div>
       <React.Fragment key="left">
         <Drawer class="drawer" variant="persistent" anchor="left" open={true}>
-          {list("left")}
+          <div className="list" role="presentation">
+            <List>
+              {chats.map((chat) => (
+                <ListItem button key={chat}>
+                  <ListItemText primary={"Chat"} />
+                </ListItem>
+              ))}
+            </List>
+            <Divider />
+          </div>
         </Drawer>
       </React.Fragment>
     </div>
