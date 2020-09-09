@@ -8,16 +8,18 @@ import "firebase/firestore";
 import db from "../firebase";
 
 import { AppContext } from "../AppContext";
+import { DashboardContext } from "./DashboardContext";
 import Message from "./Message";
 import "./Chat.css";
 
-function Chat(props) {
+function Chat() {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [username, SetUsername] = useContext(AppContext);
+  const [chat_c, setChat_c] = useContext(DashboardContext);
   useEffect(() => {
     db.collection("chats")
-      .doc("Oy2huo9IQUiFpgwPs7ck")
+      .doc(chat_c)
       .collection("Chat")
       .orderBy("timestamp", "desc")
       .onSnapshot((snaphot) => {
@@ -28,10 +30,10 @@ function Chat(props) {
           }))
         );
       });
-  }, []);
+  }, [chat_c]);
   const addMessage = (e) => {
     e.preventDefault();
-    db.collection("chats").doc("Oy2huo9IQUiFpgwPs7ck").collection("Chat").add({
+    db.collection("chats").doc(chat_c).collection("Chat").add({
       text: input,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       username: username.displayName,

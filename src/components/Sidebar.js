@@ -14,8 +14,10 @@ import "firebase/firestore";
 import db from "../firebase";
 import ChatName from "./ChatName";
 import { AppContext } from "../AppContext";
+import { DashboardContext } from "./DashboardContext";
 function Sidebar() {
   const [chats, setChats] = useState([]);
+  const [chat_c, setChat_c] = useContext(DashboardContext);
   const [username, SetUsername] = useContext(AppContext);
 
   useEffect(() => {
@@ -27,23 +29,20 @@ function Sidebar() {
       );
     });
   }, []);
-  console.log(chats);
   return (
     <div>
-      <React.Fragment key="left">
-        <Drawer class="drawer" variant="persistent" anchor="left" open={true}>
-          <div className="list" role="presentation">
-            <List>
-              {chats.map((chat) => (
-                <ListItem button key={chat}>
-                  <ChatName chat={chat}></ChatName>
-                </ListItem>
-              ))}
-            </List>
-            <Divider />
-          </div>
-        </Drawer>
-      </React.Fragment>
+      <Drawer class="drawer" variant="persistent" anchor="left" open={true}>
+        <div className="list" role="presentation">
+          <List>
+            {chats.map((chat) => (
+              <ListItem button>
+                <ChatName chat={chat}></ChatName>
+              </ListItem>
+            ))}
+          </List>
+          <Divider />
+        </div>
+      </Drawer>
     </div>
   );
 }

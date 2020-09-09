@@ -1,16 +1,21 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import db from "../firebase";
+import { DashboardContext } from "./DashboardContext";
 function ChatName(props) {
   const [chat, setChat] = useState();
+  const [chat_c, setChat_c] = useContext(DashboardContext);
   useEffect(() => {
     db.collection("chats")
       .doc(props.chat.id)
       .onSnapshot((doc) => setChat(doc.data().name));
   }, []);
+  const ChangeChat = () => {
+    setChat_c(props.chat.id);
+  };
 
   return (
     <div>
-      <h2>{chat}</h2>
+      <h2 onClick={ChangeChat}>{chat}</h2>
     </div>
   );
 }
