@@ -1,10 +1,4 @@
-import React, {
-  setState,
-  useEffect,
-  useContext,
-  useState,
-  useRef,
-} from "react";
+import React, { setState, useEffect, useContext, useState } from "react";
 import "./Sidebar.css";
 import {
   Button,
@@ -18,7 +12,7 @@ import {
 } from "@material-ui/core";
 import "firebase/firestore";
 import db from "../firebase";
-
+import ChatName from "./ChatName";
 import { AppContext } from "../AppContext";
 function Sidebar() {
   const [chats, setChats] = useState([]);
@@ -33,7 +27,7 @@ function Sidebar() {
       );
     });
   }, []);
-
+  console.log(chats);
   return (
     <div>
       <React.Fragment key="left">
@@ -42,7 +36,7 @@ function Sidebar() {
             <List>
               {chats.map((chat) => (
                 <ListItem button key={chat}>
-                  <ListItemText primary={"Chat"} />
+                  <ChatName chat={chat}></ChatName>
                 </ListItem>
               ))}
             </List>
