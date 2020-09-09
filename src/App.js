@@ -1,17 +1,16 @@
-import React, { useState, createContext } from "react";
+import React, { useState, UseContext, useContext } from "react";
 import { Container } from "@material-ui/core";
 import Login from "./components/Login";
 import "./App.css";
 import Dashboard from "./components/Dashboard";
-export const AppContext = createContext();
+
+import { AppContext } from "./AppContext";
 function App() {
-  const [username, setUsername] = useState("");
+  const [username, SetUsername] = useContext(AppContext);
   return (
     <div className="App ">
-      <AppContext.Provider value={[username, setUsername]}>
-        {!username ? <Login></Login> : <Dashboard></Dashboard>}
-        <Dashboard></Dashboard>
-      </AppContext.Provider>
+      {!username ? <Login></Login> : <Dashboard></Dashboard>}
+      {/* <Dashboard></Dashboard> */}
     </div>
   );
 }

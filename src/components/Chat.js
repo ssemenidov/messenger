@@ -7,16 +7,18 @@ import firebase from "firebase";
 import "firebase/firestore";
 import db from "../firebase";
 
+import { AppContext } from "../AppContext";
 import Message from "./Message";
-import { AppContext } from "../App";
 import "./Chat.css";
 
-function Chat() {
+function Chat(props) {
   const [input, setInput] = useState("");
   const [messages, setMessages] = useState([]);
   const [username, SetUsername] = useContext(AppContext);
   useEffect(() => {
-    db.collection("messages")
+    db.collection("chats")
+      .doc("Oy2huo9IQUiFpgwPs7ck")
+      .collection("Chat2")
       .orderBy("timestamp", "desc")
       .onSnapshot((snaphot) => {
         setMessages(
@@ -29,7 +31,7 @@ function Chat() {
   }, []);
   const addMessage = (e) => {
     e.preventDefault();
-    db.collection("messages").add({
+    db.collection("chats").doc("Oy2huo9IQUiFpgwPs7ck").collection("Chat2").add({
       text: input,
       timestamp: firebase.firestore.FieldValue.serverTimestamp(),
       username: username,
@@ -66,7 +68,11 @@ function Chat() {
 
         <FlipMove className="flipmove">
           {messages.map(({ id, data }) => (
-            <Message key={id} username={username} message={data}></Message>
+            <Message
+              key={id}
+              username={username.displayName}
+              message={data}
+            ></Message>
           ))}
         </FlipMove>
       </Container>

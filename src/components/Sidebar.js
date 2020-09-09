@@ -1,6 +1,7 @@
-import React, { setState } from "react";
+import React, { setState, useEffect, useContext, useState } from "react";
 import clsx from "clsx";
 import "./Sidebar.css";
+
 import {
   Button,
   Drawer,
@@ -9,10 +10,25 @@ import {
   ListItemText,
   ListItem,
   makeStyles,
+  Divider,
 } from "@material-ui/core";
-import Divider from "@material-ui/core/Divider";
+import "firebase/firestore";
+import db from "../firebase";
 
+import { AppContext } from "../AppContext";
 function Sidebar() {
+  const [chats, setChats] = useState([]);
+  const [username, SetUsername] = useContext(AppContext);
+
+  useEffect(() => {
+    db.collection(username.uid).onSnapshot((snaphot) => {
+      setChats(
+        snaphot.docs.map((doc) => ({
+          chatId: doc.data().id,
+        }))
+      );
+    });
+  }, []);
   const list = (anchor) => (
     <div className="list" role="presentation">
       <List>
