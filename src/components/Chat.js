@@ -41,6 +41,7 @@ function Chat() {
   return (
     <div className="Chat ">
       <Container>
+        <h2>Chat Name</h2>
         <form className="chat__form">
           <TextField
             className="chat__input"
@@ -63,7 +64,7 @@ function Chat() {
           </IconButton>
         </form>
 
-        <FlipMove>
+        <FlipMove className="flipmove">
           {messages.map(({ id, data }) => (
             <Message key={id} username={username} message={data}></Message>
           ))}

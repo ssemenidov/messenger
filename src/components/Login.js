@@ -11,6 +11,11 @@ function Login() {
   };
   return (
     <div>
+      <img
+        src="https://facebookbrand.com/wp-content/uploads/2019/10/Messenger_Logo_Color_RGB.png?w=100&h=100"
+        alt=""
+      />
+      <h1>SergeMessenger</h1>
       <Button size="large" variant="contained" color="primary" onClick={SignIn}>
         Sign in
       </Button>

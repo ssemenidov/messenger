@@ -1,5 +1,6 @@
 import React, { setState } from "react";
 import clsx from "clsx";
+import "./Sidebar.css";
 import {
   Button,
   Drawer,
@@ -10,35 +11,10 @@ import {
   makeStyles,
 } from "@material-ui/core";
 import Divider from "@material-ui/core/Divider";
-const useStyles = makeStyles({
-  list: {
-    width: 250,
-  },
-});
 
 function Sidebar() {
-  const classes = useStyles();
-  const [state, setState] = React.useState({
-    left: false,
-  });
-  const toggleDrawer = (anchor, open) => (event) => {
-    if (
-      event.type === "keydown" &&
-      (event.key === "Tab" || event.key === "Shift")
-    ) {
-      return;
-    }
-
-    setState({ ...state, [anchor]: open });
-  };
-
   const list = (anchor) => (
-    <div
-      className={clsx(classes.list)}
-      role="presentation"
-      onClick={toggleDrawer(anchor, false)}
-      onKeyDown={toggleDrawer(anchor, false)}
-    >
+    <div className="list" role="presentation">
       <List>
         {["Profile", "Contacts", "Groups"].map((text, index) => (
           <ListItem button key={text}>
@@ -52,12 +28,7 @@ function Sidebar() {
   return (
     <div>
       <React.Fragment key="left">
-        <Button onClick={toggleDrawer("left", true)}>Menu</Button>
-        <Drawer
-          anchor="left"
-          open={state["left"]}
-          onClose={toggleDrawer("left", false)}
-        >
+        <Drawer class="drawer" variant="persistent" anchor="left" open={true}>
           {list("left")}
         </Drawer>
       </React.Fragment>
