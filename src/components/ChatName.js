@@ -1,6 +1,7 @@
 import React, { useEffect, useState, useContext } from "react";
 import db from "../firebase";
 import { DashboardContext } from "./DashboardContext";
+import { ListItem } from "@material-ui/core";
 function ChatName(props) {
   const [chat, setChat] = useState();
   const [chat_c, setChat_c] = useContext(DashboardContext);
@@ -15,7 +16,9 @@ function ChatName(props) {
 
   return (
     <div>
-      <h2 onClick={ChangeChat}>{chat}</h2>
+      <ListItem button onClick={ChangeChat}>
+        <h2>{chat}</h2>
+      </ListItem>
     </div>
   );
 }

@@ -35,9 +35,7 @@ function Sidebar() {
         <div className="list" role="presentation">
           <List>
             {chats.map((chat) => (
-              <ListItem button>
-                <ChatName chat={chat}></ChatName>
-              </ListItem>
+              <ChatName chat={chat}></ChatName>
             ))}
           </List>
           <Divider />
