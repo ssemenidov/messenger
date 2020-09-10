@@ -10,7 +10,7 @@ function ChatName(props) {
       .onSnapshot((doc) => setChat(doc.data().name));
   }, []);
   const ChangeChat = () => {
-    setChat_c(props.chat.id);
+    setChat_c({ id: props.chat.id, name: chat });
   };
 
   return (
