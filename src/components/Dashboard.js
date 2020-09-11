@@ -1,9 +1,10 @@
-import React, { useState, useContext } from "react";
+import React, { useState, createContext } from "react";
 import Chat from "./Chat";
 import Sidebar from "./Sidebar";
-import { DashboardProvider } from "./DashboardContext";
+export const DashboardContext = createContext();
 
 function Dashboard() {
+  const [chat_c, setChat_c] = useState();
   const style = {
     width: `70%`,
     marginLeft: "auto",
@@ -11,10 +12,10 @@ function Dashboard() {
 
   return (
     <div style={style}>
-      <DashboardProvider>
+      <DashboardContext.Provider value={[chat_c, setChat_c]}>
         <Sidebar></Sidebar>
         <Chat></Chat>
-      </DashboardProvider>
+      </DashboardContext.Provider>
     </div>
   );
 }

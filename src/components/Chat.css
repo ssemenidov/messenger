@@ -1,8 +1,7 @@
 .Chat {
   text-align: center;
   position: relative;
-  height: 80vh;
-  overflow: auto;
+  margin-bottom: 120px;
 }
 .chat__form {
   padding: 20px;

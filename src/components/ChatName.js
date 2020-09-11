@@ -1,6 +1,6 @@
 import React, { useEffect, useState, useContext } from "react";
 import db from "../firebase";
-import { DashboardContext } from "./DashboardContext";
+import { DashboardContext } from "./Dashboard";
 import { ListItem } from "@material-ui/core";
 function ChatName(props) {
   const [chat, setChat] = useState();
@@ -11,7 +11,7 @@ function ChatName(props) {
       .onSnapshot((doc) => setChat(doc.data().name));
   }, []);
   const ChangeChat = () => {
-    setChat_c({ id: props.chat.id, name: chat });
+    setChat_c({ id: props.chat.id, name: chat, join: false });
   };
 
   return (

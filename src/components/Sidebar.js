@@ -14,17 +14,17 @@ import "firebase/firestore";
 import db from "../firebase";
 import ChatName from "./ChatName";
 import { AppContext } from "../AppContext";
-import { DashboardContext } from "./DashboardContext";
+import { DashboardContext } from "./Dashboard";
 function Sidebar() {
   const [chats, setChats] = useState([]);
   const [chat_c, setChat_c] = useContext(DashboardContext);
   const [username, SetUsername] = useContext(AppContext);
 
   useEffect(() => {
-    db.collection("userchats").onSnapshot((snaphot) => {
+    db.collection("chats").onSnapshot((snaphot) => {
       setChats(
         snaphot.docs.map((doc) => ({
-          id: doc.data().id,
+          id: doc.id,
         }))
       );
     });

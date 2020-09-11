@@ -1,14 +1,13 @@
 import React, { useState, useEffect, useContext } from "react";
-import { IconButton, TextField, Container } from "@material-ui/core";
+import { IconButton, TextField, Container, Button } from "@material-ui/core";
 import FlipMove from "react-flip-move";
 import SendIcon from "@material-ui/icons/Send";
-import AttachFileIcon from "@material-ui/icons/AttachFile";
 import firebase from "firebase";
 import "firebase/firestore";
 import db from "../firebase";
 
 import { AppContext } from "../AppContext";
-import { DashboardContext } from "./DashboardContext";
+import { DashboardContext } from "./Dashboard";
 import Message from "./Message";
 import "./Chat.css";
 
@@ -43,6 +42,9 @@ function Chat() {
 
     setInput("");
   };
+  const joinChat = () => {
+    chat_c.join = true;
+  };
 
   return (
     <div className="Chat ">
@@ -51,6 +53,7 @@ function Chat() {
       ) : (
         <Container>
           <h2>{chat_c.name}</h2>
+
           <form className="chat__form">
             <TextField
               className="chat__input"
