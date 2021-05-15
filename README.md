@@ -1,8 +1,9 @@
 # Мессенджер
 Тех Стэк:
--React
--Context Api
+- React
+- Context Api
 - Material UI
+
 Реализованый функционал:
 - авторизация
 - выбор чата
